@@ -1,0 +1,736 @@
+Project: Blind Typing Software
+Group Members: 2
+6.1 About Project
+This Project has been done during Summer Internship under the guidance of Valid Page Company. 
+Features
+•	By using Java Programming Language a software was developed to check typing accuracy. 
+•	This project is developed using core Java concepts like Inheritance, Constructors, Swing, packages, etc. 
+6.2 Paradigms of Project
+?	This project is developed using core Java concepts like Inheritance, Constructors, Swing, etc. 
+?	By using Java Programming Language a software was developed to check typing accuracy. 
+
+•	Duration: 20 days
+•	Platform: Java
+•	Software: Eclipse
+
+
+
+
+
+
+
+FLOW OF CONTROL 
+
+Admin class
+
+Login class
+
+Blind Typning class
+
+Stop class
+
+Score class
+
+HOW TO RUN 
+Open the cmd, type javac Admin .java
+Then type java Admin
+1.	Admin window will open
+User Name: abc
+Passward: abc
+Then press Login button
+2.	Login Window will open
+Fill the details like name, roll no. etc
+Then after filling all the details press Register button
+3.	BlindTyping Window will open (Workspace)
+Type the text as fast as you can with minimum mistakes.
+Then finally press Submit button.
+4.	On pressing Submit button , Stop class will calculate the time taken to type the text.
+5.	Finally Score window will open.
+6.	A file is stored in C: drive with name as username and containing all datails of user ,typed text and score.
+
+
+
+
+
+
+
+
+
+
+
+6.3 Screenshots of Project : 
+
+Admin-Window
+
+ 
+
+
+
+Registration-Window
+
+ 
+
+
+
+Registration-Window
+
+ 
+
+
+
+
+Workspace
+
+ 
+
+
+
+
+
+
+Score-Window
+
+ 
+	
+
+
+
+
+
+
+
+
+
+//ADMIN WINDOW CODE (user name : abc passward: abc)
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import java.awt.Font;
+import javax.swing.ImageIcon;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+import javax.swing.JPasswordField;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.Color;
+public class Admin extends JFrame {
+	private JTextField textField;
+	private JPasswordField passwordField;
+	public static void main(String[] args) {
+		Admin admin =new Admin();
+		admin.setVisible(true);  }
+	public Admin() {
+		getContentPane().setBackground(new Color(0, 153, 204));
+		setResizable(false);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 662, 477);
+		this.getContentPane().setLayout(null);
+		JLabel lblNewLabel = new JLabel("TECHNOVATION");
+		lblNewLabel.setForeground(new Color(220, 20, 60));
+		lblNewLabel.setFont(new Font("Algerian", Font.BOLD | Font.ITALIC, 20));
+		lblNewLabel.setBounds(228, 34, 297, 52);
+		getContentPane().add(lblNewLabel);
+		textField = new JTextField();
+		textField.setBackground(new Color(135, 206, 250));
+		textField.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 20));
+		textField.setBounds(269, 134, 272, 34);
+		getContentPane().add(textField);
+		textField.setColumns(10);
+		textField.setText(null);
+		JLabel lblUserName = new JLabel("Admin ");
+		lblUserName.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 20));
+		lblUserName.setBounds(134, 134, 137, 32);
+		getContentPane().add(lblUserName);
+		JLabel lblPassword = new JLabel("Password");
+		lblPassword.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 20));
+		lblPassword.setBounds(134, 206, 137, 32);
+		getContentPane().add(lblPassword);
+		JButton btnRegister = new JButton("Login");
+		btnRegister.setBackground(new Color(240, 230, 140));
+		btnRegister.addActionListener(new ActionListener() {
+	public void actionPerformed(ActionEvent arg0) {			
+if(textField.getText().equalsIgnoreCase("") || passwordField.getText().equalsIgnoreCase(""))
+				{    textField.setText(null);
+			                  passwordField.setText(null);
+				}
+else if(textField.getText().equals("abc")&&passwordField.getText().equals("abc"))
+                                               {    setVisible(false);
+			              Login login=new Login();
+				login.setVisible(true);		
+				}
+				else
+				{
+					textField.setText("Enter Admin Login");
+					passwordField.setText(null);
+				}
+			}
+		});
+		btnRegister.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 20));
+		btnRegister.setBounds(156, 293, 146, 50);
+		getContentPane().add(btnRegister);
+		JButton btnReset = new JButton("Reset");
+		btnReset.setBackground(new Color(240, 230, 140));
+		btnReset.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				passwordField.setText(null);
+				textField.setText(null);
+			}
+		});
+		btnReset.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 20));
+		btnReset.setBounds(379, 293, 146, 50);
+		getContentPane().add(btnReset);
+		
+		passwordField = new JPasswordField();
+		passwordField.setBackground(new Color(135, 206, 250));
+		passwordField.setEchoChar('*');
+		passwordField.setBounds(269, 195, 272, 40);
+		getContentPane().add(passwordField);
+	}
+}
+
+
+
+
+
+
+
+// LOGIN WINDOW CODE
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import java.awt.Font;
+import javax.swing.ImageIcon;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+import javax.swing.JPasswordField;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.Color;
+public class Login extends JFrame {
+	private JTextField textField;
+	private JTextField textField_1;
+	private JTextField textField_2;
+	private JTextField textField_3;
+	private JTextField textField_4;
+	public Login() {
+		setResizable(false);
+		getContentPane().setBackground(new Color(240, 255, 240));
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 662, 600);
+		this.getContentPane().setLayout(null);
+		JLabel lblNewLabel = new JLabel("Blind-Typing");
+		lblNewLabel.setForeground(new Color(255, 0, 0));
+		lblNewLabel.setBackground(new Color(255, 0, 0));
+		lblNewLabel.setFont(new Font("Algerian", Font.BOLD | Font.ITALIC, 40));
+		lblNewLabel.setBounds(201, 33, 321, 52);
+		getContentPane().add(lblNewLabel);
+		textField = new JTextField();
+		textField.setBackground(new Color(0, 206, 209));
+		textField.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 20));
+		textField.setBounds(269, 134, 272, 34);
+		getContentPane().add(textField);
+		textField.setColumns(10);
+		textField.setText(null);
+		JLabel lblUserName = new JLabel("TECH_ID");
+		lblUserName.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 20));
+		lblUserName.setBounds(134, 134, 137, 32);
+		getContentPane().add(lblUserName);
+		JButton btnRegister = new JButton("Register");
+		btnRegister.setBackground(new Color(240, 230, 140));
+		btnRegister.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+		
+if(textField.getText().equalsIgnoreCase("") ||textField_1.getText().equalsIgnoreCase("") || textField_2.getText().equalsIgnoreCase("") ||textField_3.getText().equalsIgnoreCase("") ||textField_4.getText().equalsIgnoreCase("") )
+				{
+					textField.setText(null);
+					textField_1.setText(null);
+					textField_2.setText(null);
+					textField_3.setText(null);
+					textField_4.setText(null);
+				}				
+				else{
+					setVisible(false);
+					BlindTyping blindTyping=new BlindTyping();
+					blindTyping.setVisible(true);
+					blindTyping.id=textField.getText();
+					blindTyping.name=textField_1.getText();
+					blindTyping.email=textField_2.getText();
+					blindTyping.branch=textField_3.getText();
+					blindTyping.mob=textField_4.getText();
+					
+				}
+			}
+		});
+		btnRegister.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 20));
+		btnRegister.setBounds(164, 478, 146, 50);
+		getContentPane().add(btnRegister);
+		JButton btnReset = new JButton("Reset");
+		btnReset.setBackground(new Color(240, 230, 140));
+		btnReset.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				textField.setText(null);
+				textField_1.setText(null);
+				textField_2.setText(null);
+				textField_3.setText(null);
+				textField_4.setText(null);
+			}
+		});
+		btnReset.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 20));
+		btnReset.setBounds(388, 478, 146, 50);
+		getContentPane().add(btnReset);
+		JLabel lblName = new JLabel("NAME");
+		lblName.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 20));
+		lblName.setBounds(134, 198, 137, 32);
+		getContentPane().add(lblName);
+		JLabel lblEmailid = new JLabel("EMAIL_ID");
+		lblEmailid.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 20));
+		lblEmailid.setBounds(134, 266, 137, 32);
+		getContentPane().add(lblEmailid);
+		
+		JLabel lblContactno = new JLabel("BRANCH");
+		lblContactno.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 20));
+		lblContactno.setBounds(134, 333, 137, 32);
+		getContentPane().add(lblContactno);
+		JLabel lblMobileno = new JLabel("CONTACT");
+		lblMobileno.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 20));
+		lblMobileno.setBounds(134, 399, 137, 32);
+		getContentPane().add(lblMobileno);
+		textField_1 = new JTextField();
+		textField_1.setBackground(new Color(0, 206, 209));
+		textField_1.setText((String) null);
+		textField_1.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 20));
+		textField_1.setColumns(10);
+		textField_1.setBounds(269, 196, 272, 34);
+		getContentPane().add(textField_1);
+		textField_2 = new JTextField();
+		textField_2.setBackground(new Color(0, 206, 209));
+		textField_2.setText((String) null);
+		textField_2.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 20));
+		textField_2.setColumns(10);
+		textField_2.setBounds(269, 264, 272, 34);
+		getContentPane().add(textField_2);
+		
+		textField_3 = new JTextField();
+		textField_3.setBackground(new Color(0, 206, 209));
+		textField_3.setText((String) null);
+		textField_3.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 20));
+		textField_3.setColumns(10);
+		textField_3.setBounds(269, 333, 272, 34);
+		getContentPane().add(textField_3);
+		textField_4 = new JTextField();
+		textField_4.setBackground(new Color(0, 206, 209));
+		textField_4.setText((String) null);
+		textField_4.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 20));
+		textField_4.setColumns(10);
+		textField_4.setBounds(269, 397, 272, 34);
+		getContentPane().add(textField_4);
+	}
+}
+
+
+
+
+
+
+
+
+// WORKSPACE WINDOW 
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Cursor;
+import java.awt.EventQueue;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import java.awt.TextArea;
+import java.awt.Font;
+import java.awt.Button;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.sql.Time;
+import java.util.Timer;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.io.*;
+import java.util.Scanner;
+import javax.swing.UIManager;
+public class BlindTyping extends JFrame {
+
+	TextArea textArea = new TextArea();	
+	TextArea textArea_1 = new TextArea();
+	 private final JLabel lblTypeHere = new JLabel("Type Here");
+         Button button_1 = new Button("Reset");
+		 Button button_2 = new Button("Finish");
+		  public double marks=0;
+		 public String name;
+		 public String id;
+		 public String email;
+		 public String branch;
+		 public String mob;
+		 Stop stop=new Stop();
+	public BlindTyping()  {
+		stop.start();
+		getContentPane().setBackground(new Color(65, 105, 225));
+		textArea.setEditable(false);
+		textArea.setEnabled(false);
+		textArea.setText(input1);		
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(0, 0,1375,730);
+		this.getContentPane().setLayout(null);
+		textArea.setFont(new Font("Arial", Font.PLAIN, 20));
+		textArea.setForeground(Color.BLACK);
+		textArea.setBounds(46, 103, 1303, 436);
+		getContentPane().add(textArea);
+		textArea.setBackground(new Color(255, 255, 255));	
+		textArea_1.setForeground(Color.WHITE);
+		textArea_1.setFont(new Font("Arial", Font.PLAIN, 1));
+		textArea_1.setBackground(new Color(255, 255, 255));
+		textArea_1.setBounds(207, 557, 1142, 47);
+		getContentPane().add(textArea_1);
+		textArea_1.setCursor(null);
+		JLabel lblBlindtyping = new JLabel("BLIND-TYPING");
+		lblBlindtyping.setForeground(Color.RED);
+		lblBlindtyping.setFont(new Font("Algerian", Font.BOLD | Font.ITALIC, 26));
+		lblBlindtyping.setBounds(505, 34, 342, 47);
+		getContentPane().add(lblBlindtyping);
+		lblTypeHere.setForeground(Color.RED);
+		lblTypeHere.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 25));
+		lblTypeHere.setBounds(40, 554, 200, 50);
+		getContentPane().add(lblTypeHere);
+		button_1.setBackground(new Color(240, 230, 140));
+		button_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				textArea_1.setText(" ");
+			}
+		});
+		button_1.setFont(new Font("Arial", Font.BOLD, 16));
+		button_1.setBounds(472, 630, 88, 22);
+		getContentPane().add(button_1);
+		button_2.setBackground(new Color(240, 230, 140));
+		button_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				fun();
+				setVisible(false);
+				 Score score=new Score();
+				score.setVisible(true);
+				score.textField.setText(id);
+				score.textField_1.setText(name);
+				score.textField_2.setText(email);
+				score.textField_3.setText(branch);
+				score.textField_4.setText(mob);
+				score.textField_5.setText(Double.toString(marks));
+				try {
+					fileWrite();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+			}
+		});
+		button_2.setFont(new Font("Arial", Font.BOLD, 16));
+		button_2.setBounds(967, 630, 88, 22);
+		getContentPane().add(button_2);
+}              String input1="NASA or National Aeronautics and Space Administration, agency of "
+		+ "the United States governmentdeveloping space "
+		+ "\nexploration. NASA conducts both human and unpiloted spaceflights,"
+		+ "and also trains astronauts and carries out "
+		+ "\nin space. NASAs include planetary science, "
+		+ "astrophysics, astronomy, Earth science, astrobiology, and aerospace "
+		+ "\nmedicine. The agency performance and design of airplanes "
+		+ "(aeronautics) and rockets as well. "
+		+ "\nNASA is based in Washington, D.C., and is under the guidance of"
+		+ "the president of the  The president is mainly  "
+		+ "\nfor determining NASAs budget, which directly affects "
+		+ "the mission and goals of the agency."
+		+ "\nNASA is organized into directorates: the Aeronautics"
+		+ "Research Mission Directorate, Exploration Systems Mission ,"
+		+ "\nthe Science Mission Directorate, & the Space Operations Mission Directorate."
+		+ "NASA employs many engineers, &  "
+		+ "\nmajor installations across the country. These facilities include the"
+		+ "John F. Kennedy Space Center , Florida; "
+		+ "\nthe Lyndon B. Johnson Space Center in Houston, Texas; the Goddard Space "
+		+ "Flight Center in Greenbelt, Maryland; the "
+		+ "\nFlight Center in Huntsville, Alabama; and the Jet Propulsion Laboratory"
+		+ "in Pasadena, California."
+		+ "\nScientistsoutside the U.S. government and from "
+		+ "other countries commonly work with NASA on particular projects "
+		+ "\nspace missions. Satellites launched by NASA are used by"
+		+ "the National Oceanic  Administration (NOAA) "
+		+ "\nand other government agencies. Although NASA is a civilian agency, "
+		+ "it sometimes shares launch facilities ."
+		+ "\nNASA replaced the National Advisory Committee"
+		+ "for Aeronautics (NACA) that was created by the United"
+		+ "\nStates Congress in 1915. NASA absorbed various aviation and"
+		+ "space organizations that were already established."
+		+"\nBoth nations worked to develop rockets that could "
+		+ "carry satellites and piloted missions into space.";
+	public void fun()
+	{ 
+		stop.stopp();	
+		 Long time=stop.getElapsedTimeSecs();
+	String string1="",string2="";
+	String input[] = new String[500];
+	String userInput[] = new String[500];
+       int k=0;
+		String bothString=input1;
+		String temp=textArea_1.getText();
+   	    String text= temp.replaceAll("\n","");
+		int length1=bothString.length();
+		int length2=text.length();
+	    int j=0;
+		for(int i=0;i<length1;i++)
+		 {  
+			while(j<length2 && i<length1)
+			{
+			char ch1=bothString.charAt(i);
+			char ch2=temp.charAt(j);	
+			if(ch1=='.')
+			{     
+				j=j+2;
+			}
+			
+			if(ch1==ch2)
+			{     
+				marks=marks+5;
+				j++;
+			}
+			else
+			{     
+				marks= marks-0.5;
+				j++;
+			}
+			break;
+			}
+	}
+		
+		 if(length1==length2)
+			 {  
+			 marks=marks+20;
+			 }
+		
+		 for(int i=0;i<length1;i++)
+		    {
+		    char ch=bothString.charAt(i);
+		    if(ch!=' ')
+		    {string1=string1+ch;}
+		    else 
+		    {
+		    	input[k]=string1;k++;string1="";}
+		    }
+
+		 k=0;
+		    for( int i=0;i<length2;i++)
+		    { char ch=temp.charAt(i);
+		    if(ch!=' ')
+		    {string2=string2+ch;}
+		    else 
+		    {
+		      userInput[k]=string2;
+		      k++;string2="";}
+		    }
+		    for( j=0;j<k;j++)
+		    { 
+		    if(input[j].equalsIgnoreCase(userInput[j]))
+		    {   
+		    	marks=marks+10;
+		    }
+		    else
+		    {   
+		    	marks=marks-1;
+		    }
+			}
+	}
+	public void fileWrite() throws IOException
+	{   
+		
+		//String path="/home/test/Documents/".concat(name).concat(".pdf");
+		//FileOutputStream fo = new FileOutputStream(path,true);
+		
+		
+		String path="E:\\".concat(name).concat(".pdf");
+		FileOutputStream fo = new FileOutputStream(path,true);
+	String message = "\n".concat(id).concat("\n").concat(name).concat("\n").concat(email).concat("\n").concat(branch).concat("\n").concat(mob).concat("\n").concat("marks").concat(Double.toString(marks)).concat("\n").concat(textArea_1.getText()).concat("\n");
+				fo.write(message.getBytes());
+				fo.close();				
+		}
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//SCORE WINDOW CODE
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import java.awt.Font;
+import javax.swing.ImageIcon;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+import javax.swing.JPasswordField;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.Color;
+public class Score extends JFrame {
+	public JTextField textField;
+	public JTextField textField_1;
+	public JTextField textField_2;
+	public JTextField textField_3;
+	public JTextField textField_4;
+	public JTextField textField_5;
+	public Score() {
+		setResizable(false);
+		getContentPane().setBackground(new Color(255, 228, 196));
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 80, 662, 600);
+		this.getContentPane().setLayout(null);
+		JLabel lblNewLabel = new JLabel("Blind-Typing");
+		lblNewLabel.setForeground(new Color(255, 0, 0));
+		lblNewLabel.setFont(new Font("Algerian", Font.BOLD | Font.ITALIC, 40));
+		lblNewLabel.setBounds(201, 33, 340, 52);
+		getContentPane().add(lblNewLabel);
+		textField = new JTextField();
+		textField.setBackground(new Color(135, 206, 250));
+		textField.setEditable(false);
+		textField.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 20));
+		textField.setBounds(269, 134, 272, 34);
+		getContentPane().add(textField);
+		textField.setColumns(10);
+		textField.setText(null);
+		JLabel lblUserName = new JLabel("TECH_ID");
+		lblUserName.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 20));
+		lblUserName.setBounds(134, 134, 137, 32);
+		getContentPane().add(lblUserName);
+		JLabel lblName = new JLabel("NAME");
+		lblName.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 20));
+		lblName.setBounds(134, 198, 137, 32);
+		getContentPane().add(lblName);
+		JLabel lblEmailid = new JLabel("EMAIL_ID");
+		lblEmailid.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 20));
+		lblEmailid.setBounds(134, 266, 137, 32);
+		getContentPane().add(lblEmailid);
+		JLabel lblContactno = new JLabel("BRANCH");
+		lblContactno.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 20));
+		lblContactno.setBounds(134, 333, 137, 32);
+		getContentPane().add(lblContactno);
+		JLabel lblMobileno = new JLabel("CONTACT");
+		lblMobileno.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 20));
+		lblMobileno.setBounds(134, 399, 137, 32);
+		getContentPane().add(lblMobileno);
+		textField_1 = new JTextField();
+		textField_1.setBackground(new Color(135, 206, 250));
+		textField_1.setEditable(false);
+		textField_1.setText((String) null);
+		textField_1.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 20));
+		textField_1.setColumns(10);
+		textField_1.setBounds(269, 196, 272, 34);
+		getContentPane().add(textField_1);
+		textField_2 = new JTextField();
+		textField_2.setBackground(new Color(135, 206, 250));
+		textField_2.setEditable(false);
+		textField_2.setText((String) null);
+		textField_2.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 20));
+		textField_2.setColumns(10);
+		textField_2.setBounds(269, 264, 272, 34);
+		getContentPane().add(textField_2);
+		textField_3 = new JTextField();
+		textField_3.setBackground(new Color(135, 206, 250));
+		textField_3.setEditable(false);
+		textField_3.setText((String) null);
+		textField_3.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 20));
+		textField_3.setColumns(10);
+		textField_3.setBounds(269, 333, 272, 34);
+		getContentPane().add(textField_3);
+		textField_4 = new JTextField();
+		textField_4.setBackground(new Color(135, 206, 250));
+		textField_4.setEditable(false);
+		textField_4.setText((String) null);
+		textField_4.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 20));
+		textField_4.setColumns(10);
+		textField_4.setBounds(269, 397, 272, 34);
+		getContentPane().add(textField_4);
+		JLabel lblScore = new JLabel("SCORE");
+		lblScore.setForeground(Color.BLACK);
+		lblScore.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 20));
+		lblScore.setBounds(134, 470, 137, 32);
+		getContentPane().add(lblScore);
+		textField_5 = new JTextField();
+		textField_5.setBackground(new Color(135, 206, 250));
+		textField_5.setText((String) null);
+		textField_5.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 20));
+		textField_5.setEditable(false);
+		textField_5.setColumns(10);
+		textField_5.setBounds(269, 468, 272, 34);
+		getContentPane().add(textField_5);
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+//STOP CLASS CODE ( TO STOP THE CLOCK TO CALCULATE TIME )
+
+public class Stop {
+	private long startTime = 0;
+	private long stopTime = 0;
+	private boolean running = false;
+	public void start() {
+	    this.startTime = System.currentTimeMillis();
+	    this.running = true;
+	}
+	public void stopp() {
+	    this.stopTime = System.currentTimeMillis();
+	    this.running = false;
+	}
+	//elaspsed time in milliseconds
+	public long getElapsedTime() {
+	    long elapsed;
+	    if (running) {
+	         elapsed = (System.currentTimeMillis() - startTime);
+	    }
+	    else {
+	        elapsed = (stopTime - startTime);
+	    }
+	    return elapsed;
+	}
+	//elaspsed time in seconds
+	public long getElapsedTimeSecs() {
+	    long elapsed;
+	    if (running) {
+	        elapsed = ((System.currentTimeMillis() - startTime) / 1000);
+	    }
+	    else {
+	        elapsed = ((stopTime - startTime) / 1000);
+	    }
+	    return elapsed;
+	}
+}
